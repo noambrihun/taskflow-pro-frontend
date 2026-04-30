@@ -23,8 +23,11 @@ function Tasks() {
   }, [])
 
   return (
-    <div className="space-y-4">
-      <h1 className="text-2xl font-bold mb-4">Tasks</h1>
+    <div className="min-h-full space-y-5 rounded-2xl bg-gradient-to-br from-slate-50 via-white to-indigo-50/40 p-5">
+      <div className="mb-2 rounded-xl border border-slate-200/70 bg-white/80 p-4 shadow-sm backdrop-blur">
+        <h1 className="text-2xl font-extrabold tracking-tight text-slate-900">Tasks</h1>
+        <p className="mt-1 text-sm text-slate-500">Manage your tasks by priority and status</p>
+      </div>
 
       {tasks.map((task) => (
         <TaskCard key={task._id} task={task} onUpdate={fetchTasks} />
