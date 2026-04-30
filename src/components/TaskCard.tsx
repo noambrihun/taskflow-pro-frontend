@@ -8,7 +8,8 @@ type Task = {
   }
   
   type Props = {
-    task: Task
+    task: Task,
+    onUpdate: () => void | Promise<void>
   }
   
   function TaskCard({ task }: Props) {
@@ -36,7 +37,7 @@ type Task = {
             {task.completed ? "Done" : "Mark as Done"}
           </button>
   
-          <button className="bg-red-500 text-white w-24 px-3 py-2 rounded-md">
+          <button  className="bg-red-500 text-white w-24 px-3 py-2 rounded-md">
             Delete
           </button>
         </div>
