@@ -30,3 +30,9 @@ export const updateTask = async (id: string,updateTask : any) => {
   const data = await res.json()
   return data
 }
+
+export const deleteTask = async (id: string) => {
+  await fetch(`${BASE_URL}/${id}`, {
+    method: "DELETE",
+  })
+}

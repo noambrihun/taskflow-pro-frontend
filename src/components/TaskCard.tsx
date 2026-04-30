@@ -1,3 +1,4 @@
+import { deleteTask } from "../service/taskService"
 type Task = {
     _id: string
     title: string
@@ -12,7 +13,11 @@ type Task = {
     onUpdate: () => void | Promise<void>
   }
   
-  function TaskCard({ task }: Props) {
+  function TaskCard({ task, onUpdate }: Props) {
+    const handleDelete = async () => {
+      await deleteTask(task._id)
+      onUpdate()
+    }
     return (
       <div className="bg-white shadow-md rounded-lg p-4 flex justify-between items-center">
         
@@ -37,13 +42,13 @@ type Task = {
             {task.completed ? "Done" : "Mark as Done"}
           </button>
   
-          <button  className="bg-red-500 text-white w-24 px-3 py-2 rounded-md">
+          <button onClick={handleDelete} className="bg-red-500 text-white w-24 px-3 py-2 rounded-md">
             Delete
           </button>
         </div>
   
-      </div>
-    )
-  }
+    </div>
+  )
+}
   
   export default TaskCard
