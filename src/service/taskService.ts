@@ -19,13 +19,13 @@ export const addTask = async (task: { title: string; description: string; status
   return data
 }
 
-export const updateTask = async (id: string,updateTask : any) => {
+export const updateTask = async (id: string,update : any) => {
   const res = await fetch(`${BASE_URL}/${id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json"
     },
-    body: JSON.stringify(updateTask)
+    body: JSON.stringify(update)
   })
   const data = await res.json()
   return data
