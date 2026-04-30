@@ -5,3 +5,16 @@ export const getTasks = async () => {
   const data = await res.json()
   return data
 }
+
+export const addTask = async (task: { title: string; description: string; status: string; priority: string }) => {
+  const res = await fetch(BASE_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(task)
+  })
+
+  const data = await res.json()
+  return data
+}
