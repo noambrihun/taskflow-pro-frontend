@@ -1,12 +1,25 @@
 import './index.css'
+import { Routes, Route } from 'react-router-dom'
+import Dashboard from './pages/Dashboard'
+import Tasks from './pages/Tasks'
+import AddTask from './pages/AddTask'
+import Sidebar from './components/Sidebar'
 
 function App() {
   return (
-    <>
-      <h1 className='text-3xl font-bold underline'>Hello World</h1>
-      <p className='text-lg'>This is a paragraph</p>
-      <button className='bg-blue-500 text-white p-2 rounded-md'>Click me</button>
-    </>
+   <div className="flex">
+    <Sidebar />
+
+    {/* Main Content */}
+    <div className="flex-1 p-6">
+      <Routes>
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/tasks" element={<Tasks />} />
+        <Route path="/add-task" element={<AddTask />} />
+      </Routes>
+    </div>
+
+  </div>
   )
 }
 
