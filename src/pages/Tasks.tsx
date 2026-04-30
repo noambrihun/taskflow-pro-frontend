@@ -1,20 +1,24 @@
 import TaskCard from "../components/TaskCard"
-
+import { useState, useEffect } from "react"
+import { getTasks } from "../service/taskService"
+  type Task = {
+    _id: string
+    title: string
+    description: string
+    completed: boolean
+  }
 function Tasks() {
-  const tasks = [
-    {
-      _id: "1",
-      title: "Learn React",
-      description: "Study hooks and components",
-      completed: false
-    },
-    {
-      _id: "2",
-      title: "Build Project",
-      description: "Create TaskFlow app",
-      completed: true
+  const [tasks, setTasks] = useState <Task[]>([])
+
+  
+  useEffect(() => {
+    const fetchTasks = async () => {
+      const data = await getTasks()
+      setTasks(data)
     }
-  ]
+
+    fetchTasks()
+  }, [])
 
   return (
     <div className="space-y-4">
